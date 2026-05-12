@@ -1,0 +1,13 @@
+# Blueprint Render: https://render.com/docs/infrastructure-as-code
+# No dashboard: New > Blueprint > conecte este repositório (detecta render.yaml).
+# Ou Web Service manual com os mesmos build/start abaixo.
+
+services:
+  - type: web
+    name: ecodescarte
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn server:app --bind 0.0.0.0:$PORT
+    healthCheckPath: /
